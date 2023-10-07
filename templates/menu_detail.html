@@ -1,0 +1,39 @@
+
+
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="section mt-2">
+    <div class="section-title text-center">Menu Details</div>
+        <div class="card">
+        <div class="card-body">
+            <div class="row">
+                
+            <div class="col-sm-8"> 
+                {{ menuitem.name }} <br>
+                {{ menuitem.category }} <br>
+                <img class="imaged w48" src='{{ menuitem.picture.url }}'  alt="{{menuitem.name}}">
+               
+            </div>
+           
+            
+         
+           <div class="col-sm-4 text-right">
+        
+            <a href="{% url 'menuitem_update' menuitem.pk %}"><span class="text-primary">Edit</span></a>
+           
+
+
+
+        </div> 
+        
+        </div>
+</div>
+</div>
+</div>
+
+{%endblock%}

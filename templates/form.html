@@ -1,0 +1,18 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group basic">
+        <div class="input-wrapper">
+            <label class="label" for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+            {{ field }}
+            <i class="clear-input">
+                <ion-icon name="close-circle"></ion-icon>
+            </i>
+        </div>
+        <div class="input-info">{{ field.help_text }}</div>
+    </div>
+    {% endfor %}
+    
+
+<button class="btn btn-primary btn-block btn-lg" type="submit">Save</button>
+</form>

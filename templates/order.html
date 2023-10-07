@@ -1,0 +1,97 @@
+{% extends 'partials/base.html' %} {% load static %} {% block content %} <br>
+<br>
+<!-- <div class="section mt-2"><div class="section-title">Area</div><div class="card"><div class="card-body"><ul class="nav nav-tabs capsuled" role="tablist">
+                {% for resturent in  resturents %}
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" title="{{resturent.id}}" href="#{{resturent.name}}" role="tab" aria-selected="true"><ion-icon name="wallet"></ion-icon>
+                        {{resturent.name}}
+                    </a></li>
+
+      
+                {% endfor %}
+            </ul></div></div></div> -->
+<div class="section mt-2">
+  <div class="section-title">Table </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="section mt-3">
+        <div class="card">
+          <div class="card-body">
+            <ul class="nav nav-tabs capsuled" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link " data-bs-toggle="tab" href="#orderArea" role="tab"> orderArea </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " data-bs-toggle="tab" href="#chosemenu" role="tab"> Select Menu </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " data-bs-toggle="tab" href="#currentorder" role="tab"> Current Order </a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-1">
+              <div class="tab-pane fade " id="orderArea" role="tabpanel">
+                <ul class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"> 
+                    <form action="{% url 'add_to_order' %}" method="post"> {% csrf_token %} {{ br_table_form.as_p }}
+                        <ul> {% for temporder in  temporders %} <li style="list-style: none;">
+                            <input type="hidden" class="form-control" id="userid3" name="mac[]" value='{{ temporder.mac }}' placeholder="quantity">
+                            <input type="hidden" class="form-control" id="userid3" name="menu_item[]" value='{{ temporder.menu_item.id }}' placeholder="quantity">
+                            <input type="hidden" class="form-control" id="userid3" name="quantity[]" value='{{ temporder.quantity }}' placeholder="quantity">
+                            <input type="hidden" class="form-control" id="userid3" name='price[]' value='{{ temporder.price }}' placeholder="quantity">
+                            {{ temporder.menu_item.name }}
+                            {{ temporder.quantity }}
+                          </li> {% endfor %} </ul>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg ">Send Order </button>
+                      </form> 
+                </ul>
+              </div>
+              <div class="tab-pane fade " id="chosemenu" role="tabpanel">
+                <ul class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"> 
+                    {% for menuitem in  menuitems %} <form method="post" action="{% url 'add_to_temp_order' %}"> {% csrf_token %} <li style="list-style: none;">
+                        <div class="item column {{ menuitem.category.name }}">
+                          <div class="icon-box">
+                            <!-- {% if menuitem.picture %}
+                                    <div class="text-center"><img src="{{ menuitem.picture.url }}" alt="{{ menuitem.id_no }} Photo" class="imaged rounded w36"></div>
+                                {% else %}
+                                <div class="text-center"><img src="{% static '/assets/img/logo.jpg'  %}" alt="{{ menuitem.id_no }} Photo" class="imaged rounded w36"></div>        
+                                {% endif %} -->
+                          </div>
+                          <div class="in">
+                            <div>
+                              <input type="hidden" name="menu_item" value="{{menuitem.id}}">
+                              <strong> {{menuitem.name}}</strong>
+                            </div>
+                            <div class="text-end">
+                              <strong>${{menuitem.price}}</strong>
+                              <div class="text-small">
+                                <input type="number" class="form-control" id="userid3" name='quantity' placeholder="quantity">
+                              </div>
+                              <button type="submit" class="btn btn-outline-primary me-1 mb-1  orderareasent">Add</button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </form> 
+                    {% endfor %}
+                </ul>
+              </div>
+
+              <div class="tab-pane fade " id="currentorder" role="tabpanel">
+                <ul class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"> 
+                    {% for orderact in  orderactive %} {{ orderact.menu_item.name  }}
+                    {{ orderact.docNo  }}
+                    <br> {% endfor %} 
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<br> {%endblock%}

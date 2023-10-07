@@ -1,0 +1,27 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+
+
+<div class="section mt-2">
+    <div class="section-title">Table </div>
+<div class="card">
+    <div class="card-body">
+
+        {% for table in  tables %}
+        {{ table.name }}
+        {% if table.booked %}
+        <ion-icon name="flash-off-outline" style='color:red'></ion-icon>
+        {% else %}
+        <ion-icon name="checkmark-done-outline" style='color:blue'></ion-icon>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+</div>
+<br>
+<br>
+
+{%endblock%}

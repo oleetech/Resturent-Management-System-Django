@@ -1,0 +1,74 @@
+    <!-- App Sidebar -->
+    <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <!-- profile box -->
+                    <div class="profileBox pt-2 pb-2">
+                        <div class="image-wrapper">
+                            {% comment %} <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36"> {% endcomment %}
+                        </div>
+                        <div class="in">
+                            {% if user.is_authenticated %}
+                            <strong> Welcome, {{ user.username }} </strong><!-- or user.first_name, user.last_name, etc. depending on your user model -->
+                            {% else %}
+                            <strong>   Welcome, Customer </strong>
+                            {% endif %}
+                          
+                        
+                        </div>
+                        <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <!-- * profile box -->
+
+
+
+
+                    <!-- others -->
+                    <div class="listview-title mt-1">Others</div>
+                    <ul class="listview flush transparent no-line image-listview">
+                        <li>
+                            <a href="{%url 'setting_page'%}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="settings-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Settings
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'need_cook' %}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Need Cook
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'needbill' %}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Need Bill
+                                </div>
+                            </a>
+                        </li>                        
+
+
+
+                    </ul>
+                    <!-- * others -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * App Sidebar -->

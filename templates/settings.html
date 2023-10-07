@@ -1,0 +1,37 @@
+
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<div class="section mt-2">
+    <div class="section-title">Basic</div>
+    <div class="card">
+        <ul class="listview flush transparent image-listview text">
+            <li>
+                <a href="{% url 'category_create'%}" class="item" >
+                    <div class="in">
+                        <div>Category</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="{%url 'menuitem_create'%}" class="item" >
+                    <div class="in">
+                        <div>Menu item</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="{%url 'resturent_create'%}" class="item" >
+                    <div class="in">
+                        <div>Resturent Branch</div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{%endblock%}

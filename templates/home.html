@@ -1,0 +1,21 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<br>
+<br>
+{% if user.is_staff or user.is_superuser %}
+<div class="section mt-2">
+    <div class="section-title text-center">Create Company </div>
+    <div class="row text-center text-large iconExample" >
+        <div class="col-2 mb-2 text-center">  </div>
+        <div class="col-2 mb-2 text-center">  </div>
+
+    <div class="col-2 mb-2 text-center"> <a href="{% url "company_create" %}"><i class="icon ion-md-add-circle" ></i> </a> </div>
+    <div class="col-2 mb-2 text-center">  </div>
+    <div class="col-2 mb-2 text-center">  </div>
+</div>
+
+</div>
+{% endif %}
+{%endblock%}
+

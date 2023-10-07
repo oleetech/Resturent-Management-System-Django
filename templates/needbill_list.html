@@ -1,0 +1,46 @@
+
+
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<div class="section mt-2">
+    <div class="section-title">Order  :</div>
+<div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+    <thead>
+      <tr>
+        <th>Table No:</th>
+        <th>Order No:</th>
+        <th> Finish Bill:</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in needbill %}
+      <tr>
+        <th scope="row">{{ order.tableNo.name }}</th>
+         <td> <a href="{% url 'orderitem' order.docNo %}">{{ order.docNo}}</a> </td>
+        <td> <a href="{% url 'billfinish' order.docNo %}">Bill Finish</a> </td> 
+
+        <td>
+          
+          {% comment %} <a href="{% url 'student_delete' student.id %}" onclick="return confirm('Are you sure?');">Delete</a> {% endcomment %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  
+</div>
+</div>
+
+
+</div>
+<br>
+<br>
+
+{%endblock%}

@@ -1,0 +1,66 @@
+
+
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<div class="section mt-2">
+    <div class="section-title text-center">Create Category </div>
+        <div class="card">
+        <div class="card-body">
+            <div class="row">
+            <div class="col-sm-8"> {{ category.name }}</div>
+           
+            
+         
+           <div class="col-sm-4 text-right">
+        
+            <a href="{% url 'category_update' category.pk %}"><span class="text-primary">Edit</span></a>
+           
+
+            <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#DialogForm">
+                <div class="in">
+                    <div>Delete</div>
+                </div>
+            </a>
+        <!-- Dialog Form -->
+        <div class="modal fade dialogbox" id="DialogForm" data-bs-backdrop="static" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete</h5>
+                    </div>
+                    <form method="post" action="{% url 'category_delete' category.pk %}">
+                        {% csrf_token %}
+                        <div class="modal-body text-start mb-2">
+
+
+
+
+     
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-inline">
+                                <button type="button" class="btn btn-text-secondary"
+                                    data-bs-dismiss="modal">CANCEL</button>
+                                <button type="submit" class="btn btn-text-primary"
+                                    data-bs-dismiss="modal">DELETE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- * Dialog Form -->
+   
+
+        </div> 
+        
+        </div>
+</div>
+</div>
+</div>
+
+{%endblock%}
