@@ -3,7 +3,7 @@ from .models import Category,Restaurant,MenuItem,Company,Shape,Space,BrTable,Tem
 
 class OrderInline(admin.TabularInline):
     model = Order
-    exclude=['tableNo','mac','docNo','isorder']
+    exclude=['tableNo','mac','isorder']
     extra = 0
     
 @admin.register(OrderInfo)

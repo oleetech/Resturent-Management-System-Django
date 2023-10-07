@@ -183,6 +183,7 @@ def add_to_order(request):
                     quantity=quantity_list[i],
                     price=price_list[i],
                     isorder=True,
+                    docNo=docNo
                 )
 
                 order_item.save()
