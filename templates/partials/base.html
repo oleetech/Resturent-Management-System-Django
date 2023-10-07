@@ -33,7 +33,8 @@
     <!-- ========= JS Files =========  -->
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <!-- Include Isotope -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
     <!-- Bootstrap -->
     <script src='{% static "assets/js/lib/bootstrap.bundle.min.js" %}'></script>
     <!-- Ionicons -->
@@ -52,38 +53,25 @@
 
     
     <script>
-        (function($) {
-            $(document).ready(function() {
-                // Attach a click event handler to the tab links
-                $('.nav-link').on('click', function(e) {
-                    e.preventDefault(); // Prevent the default link behavior
-                    {% comment %} $(this).addClass('bg-primary'); {% endcomment %}
-
-                    // Get the href attribute of the clicked tab link
-                    var tabTitle = $(this).attr('title');
-                    {% comment %} alert(tabTitle); {% endcomment %}
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/tablenoajax',
-                        data: {
-                            'resturents': tabTitle,
-               
-                          
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                                  
-                                   
-                          // // Update the value of the name input field
-
-                                                                 
-                            console.log(response);
-                        }
-                    });
-                });
+        $(document).ready(function () {
+            var $grid = $('.grid').isotope({
+                itemSelector: '.item',
+                layoutMode: 'fitRows'
             });
-        })(jQuery);
+        
+            // Filter buttons
+            $('.filter-btn').on('click', function () {
+                var filterValue = $(this).attr('data-filter');
+                $grid.isotope({ filter: filterValue });
+            });
+        
+            // Add an active class to the selected filter button
+            $('.filter-btn').on('click', function () {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+        
         
 
 
