@@ -260,3 +260,24 @@ def billfinish(request, doc_no):
 def table_list(request)    :
     tables=BrTable.objects.all() 
     return render(request,'table.html',{'tables':tables})
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def get_brtables(request):
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        try:
+            # Filter BrTable objects based on the restaurants__id field
+            brtables = BrTable.objects.filter(restaurants__id=code)
+
+            # Create a list of BrTable names
+            brtable_data = [{'id': brtable.id, 'name': brtable.name} for brtable in brtables]
+
+        except ObjectDoesNotExist:
+            pass
+        return JsonResponse({'response_data':brtable_data})
+
+        
+    return JsonResponse({}, status=400)

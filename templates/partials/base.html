@@ -75,9 +75,53 @@
         
 
 
-
-
+        (function($) {
+            $(document).ready(function() {
+          
+              
+                $(".restaurant-link").click(function (event) {
+                      const code = $(this).attr('title');
+                      alert(code)
+          
+                      $.ajax({
+                        type: 'POST',
+                        url: 'get_brtables/',
+                        data: {
+                            'code': code
+               
+                          
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            console.log(response); // Log the AJAX response for debugging
+                            var select = $("#tableNo"); // Select the <select> element
+                            select.empty(); // Clear existing options
         
+                            // Extract options from the response_data array
+                            var options = response.response_data;
+        
+                            // Add options for each BrTable object
+                            $.each(options, function(index, brtable) {
+                                select.append($('<option>', {
+                                    value: brtable.id,
+                                    text: brtable.name
+                                }));
+                            });
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                        
+                    });
+                    
+                
+          
+          
+                    });
+          
+          
+            });
+          })(jQuery);       
     </script>
 </body>
 

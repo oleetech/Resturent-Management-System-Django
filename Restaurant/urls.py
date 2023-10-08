@@ -27,5 +27,6 @@ urlpatterns = [
     path('needbill',views.needbill,name='needbill'),     
     path('billfinish/<int:doc_no>/', views.billfinish, name='billfinish'),
     path('table_list',views.table_list,name='table_list'),     
+    path('get_brtables/',views.get_brtables,name='get_brtables'),     
  
 ]

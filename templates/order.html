@@ -27,7 +27,7 @@
               <div class="tab-pane fade " id="orderArea" role="tabpanel">
                 <div class="section mt-2"><div class="section-title">Area</div><div class="card"><div class="card-body"><ul class="nav nav-tabs capsuled" role="tablist">
                 {% for resturent in  resturents %}
-                <button class="chip chip-primary ms-05 mb-05 " data-filter=".{{ resturent.name }}">
+                <button class="chip chip-primary ms-05 mb-05 restaurant-link" title={{ resturent.id }} >
                   <span class="chip-label">{{ resturent.name }}</span>
                   </button>
 
