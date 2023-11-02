@@ -21,3 +21,5 @@ admin.site.register(BrTable)
 admin.site.register(TempOrder)
 admin.site.register(Order)
 
+
+
